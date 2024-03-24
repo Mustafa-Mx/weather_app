@@ -1,3 +1,4 @@
+import 'package:a2v1/commons/bottomnavbar.dart';
 import 'package:a2v1/commons/menudrawer.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,8 @@ class HomeScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
-      drawer: const MenuDrawer(),
+      //drawer: const MenuDrawer(),
+      bottomNavigationBar: WeatherBottomNavBar(),
       body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(

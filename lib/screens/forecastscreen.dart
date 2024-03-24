@@ -1,3 +1,4 @@
+import 'package:a2v1/commons/bottomnavbar.dart';
 import 'package:flutter/material.dart';
 
 class ForecastScreen extends StatelessWidget {
@@ -13,6 +14,7 @@ class ForecastScreen extends StatelessWidget {
         ),
         backgroundColor: Colors.white,
       ),
+      bottomNavigationBar: WeatherBottomNavBar(),
       body: Container(
           decoration: BoxDecoration(
               image: DecorationImage(

@@ -1,3 +1,4 @@
+import 'package:a2v1/screens/forecastscreen.dart';
 import 'package:flutter/material.dart';
 import 'screens/homescreen.dart';
 
@@ -11,7 +12,11 @@ class WeatherApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen(),
+      routes: {
+        "/": (context) => HomeScreen(),
+        "/forecast": (context) => ForecastScreen()
+      },
+      initialRoute: "/",
     );
   }
 }
