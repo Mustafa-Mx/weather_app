@@ -1,8 +1,30 @@
 import 'package:a2v1/commons/bottomnavbar.dart';
+import 'package:a2v1/weather/http_helper.dart';
+import 'package:a2v1/weather/weather.dart';
 import 'package:flutter/material.dart';
 
-class ForecastScreen extends StatelessWidget {
+class ForecastScreen extends StatefulWidget {
   const ForecastScreen({super.key});
+
+  @override
+  State<ForecastScreen> createState() => _ForecastScreenState();
+}
+
+class _ForecastScreenState extends State<ForecastScreen> {
+  String weatherInfo = "";
+  Weather weather = Weather("", 0, 0, 0, 0, "");
+  HTTPHelper httpHelper = HTTPHelper();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    httpHelper.GetWeather("31.573152", "74.3078585").then((weatherObj) {
+      weather = weatherObj;
+      weatherInfo = weather.description;
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +49,7 @@ class ForecastScreen extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(44)),
                     color: Colors.black45),
                 child: Text(
-                  "This is Forecast Screen",
+                  "Current Weather Condition is $weatherInfo",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
