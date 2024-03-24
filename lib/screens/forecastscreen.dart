@@ -44,18 +44,55 @@ class _ForecastScreenState extends State<ForecastScreen> {
                   fit: BoxFit.fill)),
           child: Center(
             child: Container(
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(44)),
-                    color: Colors.black45),
-                child: Text(
-                  "Current Weather Condition is $weatherInfo",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(color: Colors.black45),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                        hintText: "Please Enter the name of city",
+                        suffixIcon: IconButton(
+                            icon: Icon(Icons.search), onPressed: () {})),
                   ),
-                )),
+                  createAWeatherRow("City Name", weather.cityName),
+                  createAWeatherRow(
+                      "Temperature", weather.temperature.toStringAsFixed(3)),
+                  createAWeatherRow("Wind Speed", weather.windSpeed.toString()),
+                  createAWeatherRow(
+                      "Cloud Cover", weather.cloudCover.toString()),
+                  createAWeatherRow("Humidity", weather.humidity.toString()),
+                  createAWeatherRow("Desciption", weather.description)
+                ],
+              ),
+            ),
           )),
     );
+  }
+
+  Widget createAWeatherRow(String key, String value) {
+    return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(44)),
+              color: Colors.black45),
+          child: Row(
+            children: [
+              Expanded(
+                  flex: 6,
+                  child: Text(key,
+                      style: TextStyle(fontSize: 22, color: Colors.white70))),
+              Expanded(
+                  flex: 6,
+                  child: Text(
+                    value,
+                    style: TextStyle(
+                        fontSize: 22, color: Theme.of(context).primaryColor),
+                    textAlign: TextAlign.right,
+                  )),
+            ],
+          ),
+        ));
   }
 }
