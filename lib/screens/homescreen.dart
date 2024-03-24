@@ -1,3 +1,4 @@
+import 'package:a2v1/commons/menudrawer.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,35 +6,34 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Weather Forecaster",
-            style: TextStyle(color: Colors.purpleAccent),
-          ),
-          backgroundColor: Colors.white,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Weather Forecaster",
+          style: TextStyle(color: Colors.purpleAccent),
         ),
-        body: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/images/night.png"),
-                    fit: BoxFit.fill)),
-            child: Center(
-              child: Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(44)),
-                      color: Colors.black45),
-                  child: Text(
-                    "Welcome to Weather Forecaster",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
-                  )),
-            )),
+        backgroundColor: Colors.white,
       ),
+      drawer: const MenuDrawer(),
+      body: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/night.png"),
+                  fit: BoxFit.fill)),
+          child: Center(
+            child: Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(44)),
+                    color: Colors.black45),
+                child: Text(
+                  "Welcome to Weather Forecaster",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                )),
+          )),
     );
   }
 }

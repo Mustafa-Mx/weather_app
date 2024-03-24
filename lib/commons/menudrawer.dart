@@ -8,7 +8,7 @@ class MenuDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.white,
       child: ListView(
         children: buildMenuItems(context),
       ),
@@ -18,10 +18,11 @@ class MenuDrawer extends StatelessWidget {
   List<Widget> buildMenuItems(BuildContext context) {
     List<Widget> menuItems = [];
     menuItems.add(const DrawerHeader(
-        child: Text(
+        child: Center(
+            child: Text(
       "Menu",
       style: TextStyle(fontSize: 30),
-    )));
+    ))));
 
     final Set<String> menuTitles = {"Home", "Forecast", "Map", "About"};
     menuTitles.forEach((element) {
